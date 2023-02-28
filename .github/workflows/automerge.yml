@@ -17,7 +17,7 @@ jobs:
         run: git fetch
 
       - name: Merge
-        run: git merge $branch
+        run: git merge origin/$branch
 
       - name: Push
         run: git push
