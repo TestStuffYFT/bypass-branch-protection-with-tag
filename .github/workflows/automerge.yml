@@ -11,8 +11,8 @@ jobs:
         with:
           ref: main
 
-      - name: Rebase
-        run: git rebase ${{ github.head_ref || github.ref_name }}
+      - name: Merge
+        run: git merge ${{ github.head_ref || github.ref_name }}
 
       - name: Push
         run: git push
