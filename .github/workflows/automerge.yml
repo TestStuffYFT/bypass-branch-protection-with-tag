@@ -6,13 +6,18 @@ jobs:
   merge-branch:
     if: ${{ github.event.label.name == 'merge' }}
     runs-on: ubuntu-latest
+    env:
+      branch: ${{ github.head_ref || github.ref_name }}
     steps:
       - uses: actions/checkout@v3
         with:
           ref: main
 
+      - name: Fetch
+        run: git fetch
+
       - name: Merge
-        run: git merge ${{ github.head_ref || github.ref_name }}
+        run: git merge $branch
 
       - name: Push
         run: git push
